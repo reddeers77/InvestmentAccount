@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+<h1>RETURN</h1>
+
+{% block form %}
+                
+                 
+    <div class="inputs"><label for="name">Hisse</label> </label> <input type='text' name='name' id='name' class="form-control" value={{name}}> </div>                        
+    <div class="inputs"> <label for="amount">Miktar</label> <input type='text' name='amount' id='amount' class="form-control" value={{result.amount}}> </div>
+    <div class="inputs"> <label for="date">Tarih </label> </div>               
+    <div id="dateid">
+        <select class="form-control col-3" id="daySelect" name="daySelect" >
+            {% for i in range(1,32)  %}     
+                {% if i != day %}
+                    <option value={{i}}>{{i}}</option>                                    
+                {% else %}
+                    <option selected value={{i}}>{{i}}</option>                    
+                {% endif %}
+                       
+            {% endfor %}
+            
+
+                
+
+        </select>
+        <select class="form-control col-3" id="monthSelect" name="monthSelect">   
+            {% for i in range(0,12)  %}
+                {% if i != month %}
+                    <option value={{i+1}}>{{months[i]}}</option>
+                
+                {% else %}
+                    <option selected value={{i+1}}>{{months[i]}}</option> 
+                {% endif %}
+                
+            
+            {% endfor %}
+                                        
+            
+            
+            
+
+        </select>
+
+        <select class="form-control col-3" id="yearSelect" name="yearSelect"> 
+            {% for i in range(1950,2021) %}  
+                {% if i != year %}
+                    <option value={{i}}>{{i}}</option>                                    
+                {% else %}
+                    <option selected value={{i}}>{{i}}</option>                    
+                {% endif %}         
+                                                  
+            {% endfor %}
+        
+    </select> 
+    </div>  
+{% endblock form %}            
+
+
+
+
+
+
+ 
+
+{% block body %} 
+    
+
+    <div id="info">     
+        <p> Bilanço</p>        
+        <p>Şirket : {{iname}}</p>
+        <p>Yatırım Tarihi : {{result.date}}</p>
+        <p>Yatırım yapılan miktar : {{result.amount}} USD</p>               
+        <p>Kasa : {{today_amount}} USD </p>
+        <p>Kar/Zarar : {{today_amount-result.amount}} USD </p>
+        <p>% Kar/Zarar : {{(today_amount-result.amount)*100/result.amount}} % USD </p>
+    </div>      
+    
+{% endblock body %}
+ 
+
+
+
+
+    
+
