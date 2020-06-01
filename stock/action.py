@@ -41,9 +41,6 @@ class Action():
         return amount
 
     def Today_Money(self,buy_price,sell_price):
-        print(type(self.amount))
-        print(type(buy_price))
-        print('-------------------------------------------')
         paperCount = float((self.amount)/buy_price)
         paperValue = (paperCount*sell_price)
         paperValue = int(paperValue)
